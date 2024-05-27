@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import dotenv from  'dotenv'
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string>('');
@@ -13,7 +14,7 @@ const App: React.FC = () => {
     setChatHistory([...chatHistory, userMessage]);
 
     try {
-      const res = await axios.post(`${process.env.BACKEND_URL}/chat`, { message });
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/chat`, { message });
       const botMessage = { sender: 'bot', text: res.data.response };
       setChatHistory([...chatHistory, userMessage, botMessage]);
     } catch (error) {

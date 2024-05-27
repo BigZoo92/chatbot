@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import dotenv from  'dotenv'
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string>('');

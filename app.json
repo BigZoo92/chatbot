@@ -1,0 +1,15 @@
+{
+    "name": "BigZooChatBot",
+    "scripts": {
+      "postdeploy": "cd backend && python app.py"
+    },
+    "env": {},
+    "formation": {
+      "web": {
+        "command": "cd backend && python app.py"
+      }
+    },
+    "addons": [],
+    "buildpacks": []
+  }
+  

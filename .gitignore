@@ -1,0 +1,4 @@
+backend/chatbot-env
+frontend/node_modules
+frontend/.env.production
+frontend/.env.development

@@ -13,7 +13,7 @@ const App: React.FC = () => {
     setChatHistory([...chatHistory, userMessage]);
 
     try {
-      const res = await axios.post('http://localhost:5000/chat', { message });
+      const res = await axios.post(`${process.env.BACKEND_URL}/chat`, { message });
       const botMessage = { sender: 'bot', text: res.data.response };
       setChatHistory([...chatHistory, userMessage, botMessage]);
     } catch (error) {

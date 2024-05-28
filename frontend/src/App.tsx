@@ -12,14 +12,19 @@ const App: React.FC = () => {
     setChatHistory([...chatHistory, userMessage]);
 
     try {
-     
-      const res =  await fetch(`${process.env.REACT_APP_BACKEND_URL}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({message}),
+      const response = await fetch('https://bigzoochatbot-3b83f0ea695d.herokuapp.com/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
       });
-      const botMessage = { sender: 'bot', text: res.data.response };
-      setChatHistory([...chatHistory, userMessage, botMessage]);
+
+      if (response.ok) {
+        const data = await response.json();
+        const botMessage = { sender: 'bot', text: data.response };
+        setChatHistory([...chatHistory, userMessage, botMessage]);
+      } else {
+        console.error('Error sending message:', response.statusText);
+      }
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {

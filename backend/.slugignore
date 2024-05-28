@@ -1,0 +1,15 @@
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+*.tar.gz
+*.zip
+*.whl
+*.egg-info
+dist
+build
+.env
+.gitignore
+README.md
+tests
+docs

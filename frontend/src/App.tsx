@@ -15,6 +15,7 @@ const App: React.FC = () => {
       const response = await fetch('https://bigzoochatbot-3b83f0ea695d.herokuapp.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ message }),
       });
 

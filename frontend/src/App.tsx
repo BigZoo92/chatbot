@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './App.css';
 
 const App: React.FC = () => {
@@ -13,7 +12,12 @@ const App: React.FC = () => {
     setChatHistory([...chatHistory, userMessage]);
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/chat`, { message });
+     
+      const res =  await fetch(`${process.env.REACT_APP_BACKEND_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({message}),
+      });
       const botMessage = { sender: 'bot', text: res.data.response };
       setChatHistory([...chatHistory, userMessage, botMessage]);
     } catch (error) {
